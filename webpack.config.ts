@@ -1,6 +1,7 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import 'webpack-dev-server';
+import webpack from 'webpack';
 
 module.exports = {
   mode: 'development',
@@ -10,6 +11,7 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     static: './dist',
+    watchFiles: ['src/**/*.html'], // also react to changes from html files since they are not imported
   },
   module: {
     rules: [
@@ -26,9 +28,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
+      template: './src/index.html',
       scriptLoading: 'defer',
       chunks: ['main'],
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   output: {
     filename: '[name].js',
