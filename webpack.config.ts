@@ -20,6 +20,17 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // creates `style` nodes from JS strings
+          'style-loader',
+          // translates CSS into CommonJS
+          'css-loader',
+          // compiles Sass to CSS
+          'sass-loader',
+        ],
+      },
     ],
   },
   resolve: {
