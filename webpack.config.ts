@@ -2,8 +2,9 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import 'webpack-dev-server';
 import webpack from 'webpack';
+import { Configuration } from 'webpack';
 
-module.exports = {
+const config: Configuration = {
   mode: 'development',
   entry: {
     main: './src/index.ts',
@@ -29,6 +30,7 @@ module.exports = {
           'css-loader',
           // compiles Sass to CSS
           'sass-loader',
+          'postcss-loader',
         ],
       },
     ],
@@ -54,3 +56,5 @@ module.exports = {
     runtimeChunk: 'single',
   },
 };
+
+export default config;
